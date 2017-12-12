@@ -13,7 +13,8 @@ class Task1 : public Image {
         Task1(int width, int hei) :
         Image(width, hei) { };
         void makeCircle(float x, float y);
-        void reverseImage(Image &x);
+        void reverseImage(Image &x); //To reverse another img & store in this.
+        void reverseImage(); //To reverse image itself(reverse this).
         void imageClip(Image *i1, Image *i2);
         void imageStencil(Image *i1, Image *i2);
     protected:

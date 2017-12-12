@@ -46,6 +46,8 @@ void Task1::makeCircle(float x1, float y1) {
 }
 
 
+//Reversing image doesn't work on the same image.
+//i.e, t1.reverseImage(t1) doesn't work.
 void Task1::reverseImage(Image &i) {
     Pixel **dp1 = i.get_arr();
     for(int i = 0; i < get_h(); i++) {
@@ -54,6 +56,20 @@ void Task1::reverseImage(Image &i) {
             set_pixel(i, j, c.get_r(), c.get_g(), c.get_b());
         }
     }
+}
+
+//Reversing the image itself.
+void Task1::reverseImage() {
+    Task1 t1(*this);
+    Pixel **dp1 = t1.get_arr();
+    for(int i = 0; i < get_h(); i++) {
+        for(int j = 0; j < get_w(); j++) {
+            Color c =  dp1[i][get_w() - j - 1].get_color();
+            set_pixel(i, j, c.get_r(), c.get_g(), c.get_b());
+        }
+    }
+
+
 }
 
 void Task1::imageClip(Image *i1, Image *i2) {
