@@ -23,7 +23,12 @@ Image::Image(const Image& im) {
         }
     }
 }
-Image::~Image() {if(!_arr)delete _arr;}
+Image::~Image() {
+    for(int i = 0; i < _h; i++) {
+        delete [] _arr[i];
+    }
+    delete [] _arr;
+}
 
 void Image::set_arr() {
     _arr = new Pixel*[_h];
