@@ -2,7 +2,6 @@
 #include <fstream>
 
 
-#include "Task1.h"
 #include "Task3.h"
 #include "composite_image.h"
 
