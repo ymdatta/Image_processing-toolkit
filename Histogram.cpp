@@ -29,7 +29,7 @@ void Histogram::setMinThresholds() {
         //for(int j = i - 5; j < i; j++) {
         //if(cur > _hist_vec[j]) {
         //flag1 = false;
-        //break;
+        ////break;
         //}
         //}
         //for(int j = i + 5; j > i; j--) {
