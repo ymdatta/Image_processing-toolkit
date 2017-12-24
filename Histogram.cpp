@@ -22,34 +22,27 @@ std::vector<int> Histogram::get_histvec() {
 }
 
 void Histogram::setMinThresholds() {
-    for(int i = 1; i < 255; i++) {
+    for(int i = 5; i < 251; i++) {
         int cur = _hist_vec[i];
 
-        //bool flag1 = true, flag2 = true;
-        //for(int j = i - 5; j < i; j++) {
-        //if(cur > _hist_vec[j]) {
-        //flag1 = false;
-        ////break;
-        //}
-        //}
-        //for(int j = i + 5; j > i; j--) {
-        //if(cur > _hist_vec[j]) {
-        //flag2 = false;
-        //break;
-        //}
-        //}
-        //if(flag1 && flag2) {
-        //_min_thresholds.push_back(cur);
-        //}
-        //}
-
-
-    int prev = _hist_vec[i - 1];
-    int next = _hist_vec[i + 1];
-    if((cur < prev) && (cur < next)) {
-        _min_thresholds.push_back(cur);
+        bool flag1 = true, flag2 = true;
+        for(int j = i - 5; j < i; j++) {
+            if(cur >= _hist_vec[j]) {
+                flag1 = false;
+                break;
+            }
+        }
+        for(int j = i + 5; j > i; j--) {
+            if(cur >= _hist_vec[j]) {
+                flag2 = false;
+                break;
+            }
+        }
+        if(flag1 && flag2) {
+            _min_thresholds.push_back(cur);
+        }
     }
-}
+
 }
 
 Histogram::~Histogram() {

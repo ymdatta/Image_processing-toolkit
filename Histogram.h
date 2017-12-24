@@ -17,6 +17,7 @@ class Histogram: public Image {
     private:
         std::vector<int> _hist_vec = std::vector<int>(256, 0);
         std::vector<int> _min_thresholds;
+        std::vector< std::pair<int, int> > _thresholds_pair;
 };
 
 #endif

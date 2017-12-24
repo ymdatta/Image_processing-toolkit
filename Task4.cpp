@@ -3,6 +3,27 @@
 #include <algorithm>
 #include <iostream>
 
+int thres_arr[257];
+
+void setArray(std::vector<int> thre_val) {
+    for(int i = 0; i < 257; i++) {
+        thres_arr[i] = 0;
+    }
+
+    for(int i = 0; i < 256; i++) {
+        thres_arr[i] = thre_val[i];
+    }
+}
+
+int get_val(int val) {
+    for(int i = 0; i < 256; i++) {
+        if(thres_arr[i] == val) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 void Task4::setColorOrder() {
     Color r(255, 0, 0);
     Color g(0, 128, 0);
@@ -20,13 +41,13 @@ Task4::~Task4() {
 }
 
 int Task4::setSegments() {
-    //Task4 tempi(*this);
     int noSegs = getMinThresholds().size();
-    //std::cout << "No of seg's " << noSegs << std::endl;
+
+    setArray(get_histvec());
     if(noSegs == 0) {
         return -1;
     }
-    //std::vector<int> thres_vals(5, 256);
+
     int thres_vals[5];
     for(int i = 0; i < 5; i++) {
         thres_vals[i] = 256;
@@ -34,15 +55,10 @@ int Task4::setSegments() {
     std::vector<int> MinThresholds = getMinThresholds(); 
 
     for(int i = 0; i < noSegs; i++) {
-        thres_vals[i] = MinThresholds[i];
+        thres_vals[i] = get_val(MinThresholds[i]);
     }
-    //std::cout << std::endl;
-
-    ////std::sort(thres_vals.begin(), thres_vals.end());
-
     for(int i = 0; i < get_h(); i++) {
         for(int j = 0; j < get_w(); j++) {
-            //std::cout << "i: " << i << "j: " << j ;
             if(_arr[i][j].get_brightness() <= thres_vals[0]) {
                 set_pixel(i, j, 255, 0, 0);
                 //std::cout << " red" << std::endl;
@@ -82,7 +98,6 @@ int Task4::setSegments() {
         }
     }
     MinThresholds.clear();
-    //std::cout << "beforet returning" << std::endl;
     return 0;
 }
 
@@ -96,4 +111,3 @@ void Task4::reflectImageY() {
         }
     }
 }
-
