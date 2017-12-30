@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
     Task1 t4(t1);
     t4.reverseImage(*itask1);   //REVERSE IMAGING.
     t4.imageStencil(&t4, itask2); //STENCILING.
-    std::cout << t4;
+    //std::cout << t4;
     std::cin.rdbuf(cinbuf);
     std::cout.rdbuf(coutbuf);
     in.close();
