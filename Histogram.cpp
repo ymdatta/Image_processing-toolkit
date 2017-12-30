@@ -3,9 +3,9 @@
 #include <iostream>
 
 std::vector<int> Histogram::getMinThresholds() {
-    std::sort(_min_thresholds.begin(), _min_thresholds.end());
-    _min_thresholds.erase( unique( _min_thresholds.begin(),
-                _min_thresholds.end() ), _min_thresholds.end());
+    //std::sort(_min_thresholds.begin(), _min_thresholds.end());
+    //_min_thresholds.erase( unique( _min_thresholds.begin(),
+                //_min_thresholds.end() ), _min_thresholds.end());
     return _min_thresholds;
 }
 
@@ -22,17 +22,17 @@ std::vector<int> Histogram::get_histvec() {
 }
 
 void Histogram::setMinThresholds() {
-    for(int i = 5; i < 251; i++) {
+    for(int i = 10; i < 246; i++) {
         int cur = _hist_vec[i];
 
         bool flag1 = true, flag2 = true;
-        for(int j = i - 5; j < i; j++) {
+        for(int j = i - 10; j < i; j++) {
             if(cur >= _hist_vec[j]) {
                 flag1 = false;
                 break;
             }
         }
-        for(int j = i + 5; j > i; j--) {
+        for(int j = i + 10; j > i; j--) {
             if(cur >= _hist_vec[j]) {
                 flag2 = false;
                 break;
