@@ -15,7 +15,7 @@ int main(int argc, char **argv) {
     std::ifstream in(argv[1]);
     std::streambuf *cinbuf = std::cin.rdbuf();
     std::cin.rdbuf(in.rdbuf());
-    std::ofstream out("output.ppm");
+    std::ofstream out("3rdoutputfruit.ppm");
     std::streambuf *coutbuf = std::cout.rdbuf();
     std::cout.rdbuf(out.rdbuf());
     Task3 t1;
